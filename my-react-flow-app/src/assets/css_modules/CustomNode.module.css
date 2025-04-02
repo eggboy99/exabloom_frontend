@@ -3,12 +3,12 @@
   font-size: 2em;
   font-weight: 600;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  width: 10em;
+  width: 15em;
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 15px;
   padding: 1em 0.5em;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .conditionNode {
@@ -16,23 +16,48 @@
   color: rgba(0, 0, 0, 0.5);
   border-radius: 50px;
   background-color: #e5e5e5;
+  justify-content: center;
 }
 
 .nodeDetails {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 }
 
-.iconContainer {
+.iconContainerSN,
+.iconContainerAN,
+.iconContainerIEN {
   display: flex;
   align-items: center;
-  background-color: #d8f3dc;
   padding: 10px;
   border-radius: 10px;
 }
 
+.iconContainerSN {
+  background-color: #d8f3dc;
+}
+
+.iconContainerAN {
+  background-color: #bbd1ea;
+}
+
+.iconContainerIEN {
+  background-color: #fae588;
+}
+
+.nodeLabelAndAction {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .green {
   color: #52b788;
+}
+
+.action {
+  margin: 0;
+  font-weight: 500;
 }
