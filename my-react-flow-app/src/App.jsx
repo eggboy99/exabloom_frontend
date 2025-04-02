@@ -1,16 +1,60 @@
-import { ReactFlow } from "@xyflow/react";
-
+import { useState, useCallback } from "react";
+import {
+  ReactFlow,
+  Controls,
+  Background,
+  applyNodeChanges,
+  applyEdgeChanges,
+} from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
+import CustomNode from "./components/CustomNode";
+
+const nodeTypes = {
+  customNode: CustomNode,
+};
 
 const initialNodes = [
-  { id: "1", position: { x: 0, y: 0 }, data: { label: "1" } },
-  { id: "2", position: { x: 0, y: 100 }, data: { label: "2" } },
+  {
+    id: "1",
+    data: { label: "Start Node" },
+    position: { x: 0, y: 0 },
+    type: "customNode",
+  },
+  {
+    id: "2",
+    data: { label: "END" },
+    position: { x: 100, y: 100 },
+    type: "customNode",
+  },
 ];
-const initialEdges = [{ id: "e1-2", source: "1", target: "2" }];
+
+const initialEdges = [{ id: "1-2", source: "1", target: "2", label: "+" }];
+
 function App() {
+  const [nodes, setNodes] = useState(initialNodes);
+  const [edges, setEdges] = useState(initialEdges);
+  const onNodesChange = useCallback(
+    (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
+    []
+  );
+  const onEdgesChange = useCallback(
+    (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
+    []
+  );
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
-      <ReactFlow nodes={initialNodes} edges={initialEdges} />
+    // React Flow uses its parent container dimensions value
+    <div style={{ height: "100%" }}>
+      <ReactFlow
+        nodes={nodes}
+        onNodesChange={onNodesChange}
+        edges={edges}
+        onEdgesChange={onEdgesChange}
+        nodeTypes={nodeTypes}
+        fitView
+      >
+        <Background />
+        <Controls />
+      </ReactFlow>
     </div>
   );
 }

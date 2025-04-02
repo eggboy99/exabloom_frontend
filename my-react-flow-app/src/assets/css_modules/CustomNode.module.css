@@ -1,0 +1,38 @@
+.actionNode,
+.conditionNode {
+  font-size: 2em;
+  font-weight: 600;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 10em;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  padding: 1em 0.5em;
+  display: flex;
+  justify-content: center;
+}
+
+.conditionNode {
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
+  border-radius: 50px;
+  background-color: #e5e5e5;
+}
+
+.nodeDetails {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.iconContainer {
+  display: flex;
+  align-items: center;
+  background-color: #d8f3dc;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.green {
+  color: #52b788;
+}
